@@ -1,100 +1,104 @@
-const setBannerStyle = (bW, bH, mId, mContentClass, mHeaderCloseClass) => {
-	const mHeaderCloseHeight = 40; // Modal header height (for closing)
-	const mBottomMargin = 40; // Modal bottom margin
-
-	const bannerStyle = document.createElement('style');
-
-	bannerStyle.innerHTML = `
-		:root { /* variables */
-			--content-width: ${bW}px;
-			--content-width-half: ${bW / 2}px;
-
-			--content-height: ${bH}px;
-			--content-height-negative: -${bH - mBottomMargin}px;
-
-			--content-bottom: ${mBottomMargin + mHeaderCloseHeight}px;
-		}
-
-		#${mId} {
-			display: block;
-			position: fixed;
-			z-index: 999;
-			left: 0;
-			top: 0;
-			width: 100%;
-			height: 100%;
-			overflow: auto;
-			background-color: rgba(0,0,0,0.3);
-
-			-webkit-animation-name: fadeIn;
-			-webkit-animation-duration: 0.4s;
-			animation-name: fadeIn;
-			animation-duration: 0.4s;
-		}
-
-		#${mId} .${mContentClass} {
-			position: fixed;
-			left: calc(50% - var(--content-width-half));
-			bottom: var(--content-bottom);
-			background-color: #fefefe;
-			border: 1px solid #888;
-			width: var(--content-width);
-			height: var(--content-height);
-			text-align: left;
-
-			-webkit-animation-name: slideIn;
-			-webkit-animation-duration: 0.4s;
-			animation-name: slideIn;
-			animation-duration: 0.4s;
-		}
-
-		#${mId} .${mHeaderCloseClass} {
-			padding: 0px 5px;
-			color: #aaa;
-			float: right;
-			font-size: 28px;
-			font-weight: bold;
-			height: ${mHeaderCloseHeight}px;
-		}
-
-		#${mId} .${mHeaderCloseClass}:hover,
-		#${mId} .${mHeaderCloseClass}:focus {
-			color: black;
-			text-decoration: none;
-			cursor: pointer;
-		}
-
-		#${mId} img {
-			padding: 0;
-			margin: 0;
-		}
-
-		/* Add Animation */
-		@-webkit-keyframes fadeIn {
-			from { opacity: 0 }
-			to { opacity: 1 }
-		}
-
-		@keyframes fadeIn {
-			from { opacity: 0 }
-			to { opacity: 1 }
-		}
-
-		@-webkit-keyframes slideIn {
-			from { bottom: var(--content-height-negative); opacity: 0 }
-			to { bottom: var(--content-bottom); opacity: 1 }
-		}
-
-		@keyframes slideIn {
-			from { bottom: var(--content-height-negative); opacity: 0 }
-			to { bottom: var(--content-bottom); opacity: 1 }
-		}
-	`;
-
-	document.head.appendChild(bannerStyle);
-};
-
 const startBannerModal = () => {
+	// ---------------------------------------------------------------
+	// Banner CSS
+
+	const setBannerStyle = (bW, bH, mId, mContentClass, mHeaderCloseClass) => {
+		const mHeaderCloseHeight = 20; // Modal - header height (shows closing button)
+		const mBottomMargin = 40; // Modal - bottom margin
+
+		const bannerStyle = document.createElement('style');
+
+		bannerStyle.innerHTML = `
+			:root { /* variables */
+				--content-width: ${bW}px;
+				--content-width-half: ${bW / 2}px;
+
+				--content-height: ${bH + mHeaderCloseHeight}px;
+				--content-height-negative: -${bH + mHeaderCloseHeight}px;
+
+				--content-bottom: ${mBottomMargin}px;
+			}
+
+			#${mId} {
+				display: block;
+				position: fixed;
+				z-index: 999;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				overflow: auto;
+				background-color: rgba(0,0,0,0.3);
+
+				-webkit-animation-name: fadeIn;
+				-webkit-animation-duration: 0.4s;
+				animation-name: fadeIn;
+				animation-duration: 0.4s;
+			}
+
+			#${mId} .${mContentClass} {
+				position: fixed;
+				left: calc(50% - var(--content-width-half));
+				bottom: var(--content-bottom);
+				background-color: #fefefe;
+				border: 1px solid #888;
+				width: var(--content-width);
+				height: var(--content-height);
+				text-align: left;
+
+				-webkit-animation-name: slideIn;
+				-webkit-animation-duration: 0.4s;
+				animation-name: slideIn;
+				animation-duration: 0.4s;
+			}
+
+			#${mId} .${mHeaderCloseClass} {
+				padding: 0px 5px;
+				color: #aaa;
+				float: right;
+				font: 18px Arial, sans-serif;
+				font-weight: bold;
+				height: ${mHeaderCloseHeight}px;
+			}
+
+			#${mId} .${mHeaderCloseClass}:hover,
+			#${mId} .${mHeaderCloseClass}:focus {
+				color: black;
+				text-decoration: none;
+				cursor: pointer;
+			}
+
+			#${mId} img {
+				padding: 0;
+				margin: 0;
+			}
+
+			/* Add Animation */
+			@-webkit-keyframes fadeIn {
+				from { opacity: 0 }
+				to { opacity: 1 }
+			}
+
+			@keyframes fadeIn {
+				from { opacity: 0 }
+				to { opacity: 1 }
+			}
+
+			@-webkit-keyframes slideIn {
+				from { bottom: var(--content-height-negative); opacity: 0 }
+				to { bottom: var(--content-bottom); opacity: 1 }
+			}
+
+			@keyframes slideIn {
+				from { bottom: var(--content-height-negative); opacity: 0 }
+				to { bottom: var(--content-bottom); opacity: 1 }
+			}
+		`;
+
+		document.head.appendChild(bannerStyle);
+	};
+	// ---------------------------------------------------------------
+
 	// ---------------------------------------------------------------
 	// Definicoes iniciais
 
