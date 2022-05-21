@@ -103,9 +103,6 @@ const startBannerModal = () => {
 
 	// ---------------------------------------------------------------
 	// Definicoes iniciais
-
-	const wrapper = document.getElementById('wrapper-banner'); // Wrapper para o banner nao e obrigatorio
-
 	const bannerImgWidth = 784;
 	const bannerImgHeight = 295;
 
@@ -226,11 +223,7 @@ const startBannerModal = () => {
 
 	// ---------------------------------------------------------------
 	// Insere elementos criados no DOM da pagina
-	if (wrapper !== null) { // Wrapper definido no DOM
-		wrapper.appendChild(modalBanner);
-	} else {
-		document.body.append(modalBanner);
-	}
+	document.body.append(modalBanner);
 	// ---------------------------------------------------------------
 };
 
