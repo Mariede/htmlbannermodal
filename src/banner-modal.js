@@ -1,3 +1,5 @@
+'use strict';
+
 const startBannerModal = () => {
 	// ---------------------------------------------------------------
 	// Banner CSS
@@ -114,6 +116,16 @@ const startBannerModal = () => {
 	const modalId = 'modal-banner-1';
 	const modalContentClass = 'modal-content';
 	const modalHeaderCloseClass = 'modal-close';
+	// ---------------------------------------------------------------
+
+	// ---------------------------------------------------------------
+	// Verifica se banner ja esta ativo no DOM e reinicia
+
+	const mAlreadyUp = document.getElementById(modalId);
+
+	if (mAlreadyUp !== null) {
+		mAlreadyUp.remove();
+	}
 	// ---------------------------------------------------------------
 
 	// ---------------------------------------------------------------
